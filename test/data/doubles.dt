@@ -1,0 +1,9 @@
+$pc = 0x00400000
+
+mem (0x00400000) {
+    # now time for some doubles
+    .double 0.0
+    .double -1.0
+    .double 3.14159
+    .double -1234567.89
+}

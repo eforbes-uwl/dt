@@ -1,0 +1,10 @@
+$pc = 0x00400000
+
+mem (0x00400000) {
+    # ok, but do just words work out ok?
+    .word 0x55
+    .word 0xaa
+    .word 0
+    .word -1
+    .word 12
+}

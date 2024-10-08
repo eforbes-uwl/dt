@@ -1,0 +1,30 @@
+$pc = 0x00400000
+
+mem (0x00400000) {
+
+    cond : $t0
+    val1 : $t1
+    val2 : $t2
+    res  : $t3
+
+    $a0 = 1       # stdout file descriptor into a0
+    $a1 = @one     # lower half buffer address into a1
+    $a2 = 12      # nbytes into a2
+    $a7 = 64      # write syscall number into a7
+
+    val1 = 2
+    val2 = 1
+    cond = val1 < val2
+    if (cond) {
+        res = 1
+    }
+    else {
+        ecall
+        res = 2
+    }
+skip :
+    $a0 = 0       # exit code into first arg
+    $a7 = 93      # exit syscall number into a7
+    ecall
+one : .half 0x0a31
+}

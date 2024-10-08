@@ -1,0 +1,7 @@
+$pc = 0x00400000
+
+mem (0x00400000) {
+    # so helpful to try some strings
+    .stringz "hello "
+    .stringz "world\n"
+}

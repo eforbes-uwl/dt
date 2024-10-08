@@ -1,0 +1,49 @@
+$pc = 0x000000400000
+
+mem (0x000000400000) {
+    # working
+    addi $x11, $x11, 0x1
+    slti $x11, $x11, 0x1
+    sltiu $x11, $x11, 0x1
+    xori $x11, $x11, 0x1
+    ori $x11, $x11, 0x1
+    andi $x11, $x11, 0x1
+    slli $x11, $x11, 0x1
+    srli $x11, $x11, 0x1
+    srai $x11, $x11, 0x1
+    add $x11, $x11, $x11
+    sub $x11, $x11, $x11
+    sll $x11, $x11, $x11
+    slt $x11, $x11, $x11
+    sltu $x11, $x11, $x11
+    xor $x11, $x11, $x11
+    srl $x11, $x11, $x11
+    sra $x11, $x11, $x11
+    or $x11, $x11, $x11
+    and $x11, $x11, $x11
+
+    # not sure if working
+    #lui $x11, 0x0
+    #auipc $x11, 0x0
+    #lb $x11, 0x1[$x11]
+    #lh $x11, 0x1[$x11]
+    #lw $x11, 0x1[$x11]
+    #lbu $x11, 0x1[$x11]
+    #lhu $x11, 0x1[$x11]
+    #sb $x11, 0x1[$x11]
+    #sh $x11, 0x1[$x11]
+    #sw $x11, 0x1[$x11]
+    #jal $x11, 0x0
+    #jalr $x11
+    #beq $x11, $x0, 0x0
+    #bne $x11, $x0, 0x0
+    #blt $x11, $x0, 0x0
+    #bge $x11, $x0, 0x0
+    #bltu $x11, $x0, 0x0
+    #bgeu $x11, $x0, 0x0
+    #j 0x1
+    #jr $x11
+    #ret
+    #ecall 
+    #ebreak
+}

@@ -1,0 +1,13 @@
+$pc = 0x00400000
+
+mem (0x00400000) {
+    # now mix it up, this should push the alignment code to it's limit
+    .byte 0x55         # 0x00400000
+    .half -1           # 0x00400002
+    .byte 0x22         # 0x00400004
+    .word 0xdeadbeef   # 0x00400008
+    .byte 0x44         # 0x0040000c
+    .long 11           # 0x00400010
+    .stringz "hello"   # 0x00400018
+    .word 0xaa55ff99   # 0x00400020
+}

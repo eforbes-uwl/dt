@@ -1,0 +1,9 @@
+$pc = 0x00400000
+
+mem (0x00400000) {
+    # aw shucks, let's see about floats
+    .float 0.0
+    .float -1.0
+    .float 3.14159
+    .float -1234567.89
+}

@@ -1,0 +1,10 @@
+$pc = 0x00400000
+
+mem (0x00400000) {
+    # now try some half words
+    .half 0x55
+    .half 0xaa
+    .half 0
+    .half -1
+    .half 12
+}

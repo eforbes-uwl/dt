@@ -1,0 +1,22 @@
+$pc = 0x00010000
+
+# test for div instruction
+
+# instruction block
+mem (0x00010000) {
+    addi $a0, $zero, 1       # stdout file descriptor into a0
+    $a1 = @one               # lower half buffer address into a1
+    addi $a2, $zero, 12      # nbytes into a2
+    addi $a7, $zero, 64      # write syscall number into a7
+
+    $t0 = 4
+    $t1 = 2
+    div $t0, $t0, $t1
+    bne $t0, $t1, skip
+    ecall
+skip :
+    addi $a0, $zero, 0       # exit code into first arg
+    addi $a7, $zero, 93      # exit syscall number into a7
+    ecall
+one : .half 0x0a31
+}

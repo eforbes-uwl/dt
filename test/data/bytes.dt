@@ -1,0 +1,10 @@
+$pc = 0x00400000
+
+mem (0x00400000) {
+    # just some byte data
+    .byte 0x55
+    .byte 0xaa
+    .byte 0
+    .byte -1
+    .byte 12
+}

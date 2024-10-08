@@ -1,0 +1,31 @@
+$pc = 0x00400000
+
+mem (0x00400000) {
+
+    ii:    $t1
+    stop:  $t2
+    icond: $t3
+    accum: $t4
+
+    $a0 = 1       # stdout file descriptor into a0
+    $a1 = @one     # lower half buffer address into a1
+    $a2 = 12      # nbytes into a2
+    $a7 = 64      # write syscall number into a7
+
+    ii = 10                        # $t1 = 10
+    stop = 1                       # $t2 = 1
+    accum = 1                      # $t4 = 1
+
+    icond = ii < stop              # $t3 = 1
+    until (icond) {
+        accum = accum + accum      # $t4 = 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024
+        ii = ii - 1                # $t1 = 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+        icond = ii < stop          # $t3 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 0
+    }
+
+skip :
+    $a0 = 0       # exit code into first arg
+    $a7 = 93      # exit syscall number into a7
+    ecall
+one : .half 0x0a31
+}

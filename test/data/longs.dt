@@ -1,0 +1,10 @@
+$pc = 0x00400000
+
+mem (0x00400000) {
+    # the real test, longs
+    .long 0x55
+    .long 0xaa
+    .long 0
+    .long -1
+    .long 12
+}

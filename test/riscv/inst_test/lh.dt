@@ -1,0 +1,25 @@
+$pc = 0x00010000
+
+# test for lh instruction
+
+# instruction block
+mem (0x00010000) {
+
+    addi $a0, $zero, 1       # stdout file descriptor into a0
+    $a1 = @one     # lower half buffer address into a1
+    addi $a2, $zero, 12      # nbytes into a2
+    addi $a7, $zero, 64      # write syscall number into a7
+
+    lb $t1, 1[$a1]
+    slli, $t1, $t1, 8
+    lb $t2, 0[$a1]
+    or $t1, $t1, $t2
+    lh $t0, 0[$a1]     # instruction to test
+    bne $t0, $t1, skip
+    ecall
+skip :
+    addi $a0, $zero, 0       # exit code into first arg
+    addi $a7, $zero, 93      # exit syscall number into a7
+    ecall
+one : .half 0x0a31
+}  
